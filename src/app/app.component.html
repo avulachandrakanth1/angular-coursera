@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <h2>CK's-World</h2>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page"  (click)="home()">Home</a>
+        </li>
+        <li class="nav-item nav-link " (click)="getProducts()">
+          Users
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container m-3">
+  <div class="row">
+    <div class="col-12 content" *ngIf="!listShow">
+      <p>
+        In this task i used all the requied functionality they mentioned in the instruction.
+      </p>
+      <ul style="list-style:lower-roman;">
+        <li>If you're in mobile mode Open Menu and click <b>Users</b> to show users list because it is responsive.</li>
+        <li>If you're using Laptop click <b>Users</b> to show users list because it is responsive.</li>
+        <li>I used directives to show the users data. </li>
+        <li>Form i use form fields for filter the data.</li>
+        <li>Check the functionality clearly.</li>
+      </ul>
+    </div>
+    <div class="col-12 mb-2" *ngIf="listShow">
+      <div class="row d-flex">
+        <div class="col-sm-8 col-md-6 col-lg-6">
+          <input type="text" placeholder="Search" [(ngModel)]="search" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-6 col-lg-6">
+          <button class="btn" (click)="filter()">Search</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-4" *ngFor="let item of usersList" >
+      <div class="card shadow-sm p-2 mb-2" *ngIf="listShow">
+        <p>Name : <span>{{item?.name}} </span> </p>
+        <p>Number : <span>{{item?.mobile}} </span> </p>
+        <p>Email : <span>{{item?.email}} </span> </p>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+<router-outlet></router-outlet>
